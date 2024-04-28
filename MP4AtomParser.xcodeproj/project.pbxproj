@@ -48,6 +48,7 @@
 		41DEFF232BDEFB2500E001B8 /* QTAtomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTAtomParser.swift; sourceTree = "<group>"; };
 		41DEFF242BDEFB2500E001B8 /* QTDinf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTDinf.swift; sourceTree = "<group>"; };
 		41DEFF252BDEFB2500E001B8 /* QTMdia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTMdia.swift; sourceTree = "<group>"; };
+		41DEFF342BDEFCBE00E001B8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				41DEFF132BDEFA9C00E001B8 /* MP4AtomParser */,
+				41DEFF342BDEFCBE00E001B8 /* README.md */,
 				41DEFF122BDEFA9C00E001B8 /* Products */,
 			);
 			sourceTree = "<group>";
