@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QTAtomType {
+enum QTAtomType: String {
     case ftyp
     case moov
     case mdat
@@ -44,12 +44,15 @@ enum QTAtomType {
 
 protocol QTAtom {
     var data: Data { get }
-    var size: UInt32 { get }
+    var size: UInt32 { get set}
+    var extSize: UInt64? { get set }
     var type: QTAtomType { get }
-    var location: Range<Int> { get }
+    var location: Range<Int> { get set}
     var children: [QTAtom] { get set}
     var description: String { get }
     var level: Int { get set }
+    
+    mutating func parseData()
 }
 
 extension QTAtom {
@@ -70,63 +73,76 @@ extension QTAtom {
         
         while i != location.upperBound {
             
-            let size: UInt32 = data[i..<i+4]
+            var size: UInt32 = 0
+            var extSize: UInt64?
+            var location: Range<Int>
+            
+            guard let type = String(data: data[i+4..<i+8], encoding: .utf8) else {
+                preconditionFailure()
+            }
+            
+            size = data[i..<i+4]
                 .reduce(0, { soFar, new in
                     (soFar << 8) | UInt32(new)
                 })
             
-            guard let type = String(data: data[i+4..<i+8], encoding: .utf8) else {
-                preconditionFailure()
+            if size == 1 {
+                extSize = data[i+8..<i+16]
+                    .reduce(0, { soFar, new in
+                        (soFar << 8) | UInt64(new)
+                    })
+                location = i..<i+Int(extSize!)
+                i += Int(extSize!)
+            } else {
+                location = i..<i+Int(size)
+                i += Int(size)
             }
             
             var qtAtom: QTAtom?
             
             switch type {
             case "mvhd":
-                qtAtom = QTMvhd(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTMvhd(data: data ,size: size, extSize: extSize, location: location)
             case "trak":
-                qtAtom = QTTrak(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTTrak(data: data ,size: size, extSize: extSize, location: location)
             case "tkhd":
-                qtAtom = QTTkhd(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTTkhd(data: data ,size: size, extSize: extSize, location: location)
             case "mdia":
-                qtAtom = QTMdia(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTMdia(data: data ,size: size, extSize: extSize, location: location)
             case "mdhd":
-                qtAtom = QTMdhd(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTMdhd(data: data ,size: size, extSize: extSize, location: location)
             case "hdlr":
-                qtAtom = QTHdlr(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTHdlr(data: data ,size: size, extSize: extSize, location: location)
             case "minf":
-                qtAtom = QTMinf(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTMinf(data: data ,size: size, extSize: extSize, location: location)
             case "smhd":
-                qtAtom = QTSmhd(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTSmhd(data: data ,size: size, extSize: extSize, location: location)
             case "dinf":
-                qtAtom = QTDinf(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTDinf(data: data ,size: size, extSize: extSize, location: location)
             case "dref":
-                qtAtom = QTDref(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTDref(data: data ,size: size, extSize: extSize, location: location)
             case "stbl":
-                qtAtom = QTStbl(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStbl(data: data ,size: size, extSize: extSize, location: location)
             case "stsd":
-                qtAtom = QTStsd(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStsd(data: data ,size: size, extSize: extSize, location: location)
             case "stts":
-                qtAtom = QTStts(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStts(data: data ,size: size, extSize: extSize, location: location)
             case "stsc":
-                qtAtom = QTStsc(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStsc(data: data ,size: size, extSize: extSize, location: location)
             case "stsz":
-                qtAtom = QTStsz(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStsz(data: data ,size: size, extSize: extSize, location: location)
             case "stco":
-                qtAtom = QTStco(data: data ,size: size, location: i..<i+Int(size))
+                qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
                 
             default:
                 qtAtom = nil
             }
             
             guard let qtAtom else {
-                i += Int(size)
                 continue
             }
             
             addChild(qtAtom: qtAtom)
-            
-            i += Int(size)
         }
     }
     
