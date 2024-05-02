@@ -56,6 +56,7 @@ protocol QTAtom {
 }
 
 extension QTAtom {
+    
     mutating func addChild(qtAtom: QTAtom) {
         var qtAtom = qtAtom
         qtAtom.level =  self.level + 1
