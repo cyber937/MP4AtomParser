@@ -18,5 +18,7 @@ struct QTTrak: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     
     var children = [QTAtom]()
     
+    var extDescription: String?
+    
     mutating func parseData() {}
 }

@@ -51,16 +51,11 @@ class QTAtomParser: CustomStringConvertible {
                 preconditionFailure()
             }
             
-            size = qtAtomData[i..<i+4]
-                .reduce(0, { soFar, new in
-                    (soFar << 8) | UInt32(new)
-                })
+            size = qtAtomData[i..<i+4].QTUtilConvert(type: UInt32.self)
             
             if size == 1 {
-                extSize = qtAtomData[i+8..<i+16]
-                    .reduce(0, { soFar, new in
-                        (soFar << 8) | UInt64(new)
-                    })
+                extSize = qtAtomData[i+8..<i+16].QTUtilConvert(type: UInt64.self)
+                
                 location = i..<i+Int(extSize!)
                 i += Int(extSize!)
             } else {
@@ -79,7 +74,10 @@ class QTAtomParser: CustomStringConvertible {
                 qtAtom = QTMdat(data: qtAtomData,size: size, extSize: extSize, location: location)
             case "free":
                 qtAtom = QTFree(data: qtAtomData,size: size, extSize: extSize, location: location)
-                
+            case "meta":
+                qtAtom = QTMeta(data: qtAtomData,size: size, extSize: extSize, location: location)
+            case "uuid":
+                qtAtom = QTUuid(data: qtAtomData,size: size, extSize: extSize, location: location)
             default:
                 qtAtom = nil
             }

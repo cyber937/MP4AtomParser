@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Sample Description Box
+
 struct QTStsd: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32
@@ -17,6 +19,8 @@ struct QTStsd: QTAtom, CustomStringConvertible {
     var level: Int = 0
     
     var children = [QTAtom]()
+    
+    var extDescription: String?
     
     mutating func parseData() {}
 }

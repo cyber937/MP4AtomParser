@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Dacoding Time
+
 struct QTStts: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32
@@ -17,6 +19,12 @@ struct QTStts: QTAtom, CustomStringConvertible {
     var level: Int = 0
     
     var children = [QTAtom]()
+    
+    var entryCount: UInt32?
+    var sampleCount: UInt32?
+    var sampleDelta: UInt32?
+    
+    var extDescription: String?
     
     mutating func parseData() {}
 }

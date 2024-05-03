@@ -40,6 +40,16 @@ enum QTAtomType: String {
     case stsc
     case stsz
     case stco
+    
+    case meta
+    case uuid
+}
+
+enum QTAtomHandlerType {
+    case vide
+    case soun
+    case hint
+    case meta
 }
 
 protocol QTAtom {
@@ -49,13 +59,42 @@ protocol QTAtom {
     var type: QTAtomType { get }
     var location: Range<Int> { get set}
     var children: [QTAtom] { get set}
-    var description: String { get }
     var level: Int { get set }
     
+    var description: String { get }
+    var extDescription: String? { get }
     mutating func parseData()
 }
 
 extension QTAtom {
+    
+    var description: String {
+        
+        var indent: String = ""
+        
+        for _ in 0..<level {
+            indent = indent + "   "
+        }
+        
+        var output = """
+        \(indent)Type: \(type)
+        \(indent)| Size  - \(size)
+        \(indent)| Range - \(location)
+        \(indent)| Level - \(level)
+        """
+        
+        if let extDescription = extDescription {
+            output += extDescription
+        }
+        
+        output += "\n\n"
+        
+        for atom in children {
+            output += atom.description
+        }
+        
+        return output
+    }
     
     mutating func addChild(qtAtom: QTAtom) {
         var qtAtom = qtAtom
@@ -82,16 +121,11 @@ extension QTAtom {
                 preconditionFailure()
             }
             
-            size = data[i..<i+4]
-                .reduce(0, { soFar, new in
-                    (soFar << 8) | UInt32(new)
-                })
+            size = data[i..<i+4].QTUtilConvert(type: UInt32.self)
             
             if size == 1 {
-                extSize = data[i+8..<i+16]
-                    .reduce(0, { soFar, new in
-                        (soFar << 8) | UInt64(new)
-                    })
+                extSize = data[i+8..<i+16].QTUtilConvert(type: UInt64.self)
+                
                 location = i..<i+Int(extSize!)
                 i += Int(extSize!)
             } else {
@@ -134,6 +168,8 @@ extension QTAtom {
                 qtAtom = QTStsz(data: data ,size: size, extSize: extSize, location: location)
             case "stco":
                 qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
+            case "meta":
+                qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
                 
             default:
                 qtAtom = nil
@@ -145,29 +181,6 @@ extension QTAtom {
             
             addChild(qtAtom: qtAtom)
         }
-    }
-    
-    var description: String {
-        
-        var indent: String = ""
-        
-        for _ in 0..<level {
-            indent = indent + "   "
-        }
-        
-        var output = """
-        \(indent)Type: \(type)
-        \(indent)Size  - \(size)
-        \(indent)Range - \(location)
-        \(indent)Level - \(level)\n
-        
-        """
-        
-        for atom in children {
-            output += atom.description
-        }
-        
-        return output
     }
 }
 

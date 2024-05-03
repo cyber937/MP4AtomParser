@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Sample Table Box
+
 struct QTStbl: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var data: Data
     var size: UInt32
@@ -17,6 +19,8 @@ struct QTStbl: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var level: Int = 0
     
     var children = [QTAtom]()
+    
+    var extDescription: String?
     
     mutating func parseData() {}
 }

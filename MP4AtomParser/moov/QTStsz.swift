@@ -18,5 +18,7 @@ struct QTStsz: QTAtom, CustomStringConvertible {
     
     var children = [QTAtom]()
     
+    var extDescription: String?
+    
     mutating func parseData() {}
 }

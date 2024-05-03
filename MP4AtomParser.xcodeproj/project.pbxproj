@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4107787E2BE16EC700CCBC09 /* QTUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4107787D2BE16EC700CCBC09 /* QTUtility.swift */; };
+		414AB7B02BE5624D00AFD126 /* QTMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7AF2BE5624D00AFD126 /* QTMeta.swift */; };
+		414AB7B22BE5637100AFD126 /* QTUuid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7B12BE5637100AFD126 /* QTUuid.swift */; };
 		41DEFF152BDEFA9C00E001B8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF142BDEFA9C00E001B8 /* main.swift */; };
 		41DEFF262BDEFB2500E001B8 /* QTMoov.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF1B2BDEFB2500E001B8 /* QTMoov.swift */; };
 		41DEFF272BDEFB2500E001B8 /* QTFTyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		4107787D2BE16EC700CCBC09 /* QTUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTUtility.swift; sourceTree = "<group>"; };
+		414AB7AF2BE5624D00AFD126 /* QTMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTMeta.swift; sourceTree = "<group>"; };
+		414AB7B12BE5637100AFD126 /* QTUuid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTUuid.swift; sourceTree = "<group>"; };
 		41DEFF112BDEFA9C00E001B8 /* MP4AtomParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MP4AtomParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		41DEFF142BDEFA9C00E001B8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		41DEFF1B2BDEFB2500E001B8 /* QTMoov.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTMoov.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				41DEFF222BDEFB2500E001B8 /* QTFree.swift */,
 				41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */,
 				41DEFF212BDEFB2500E001B8 /* QTMdat.swift */,
+				414AB7AF2BE5624D00AFD126 /* QTMeta.swift */,
+				414AB7B12BE5637100AFD126 /* QTUuid.swift */,
 				41EC044C2BE1423600EBE1A5 /* moov */,
 				4107787D2BE16EC700CCBC09 /* QTUtility.swift */,
 			);
@@ -128,13 +134,13 @@
 				41EC04552BE1447000EBE1A5 /* QTTkhd.swift */,
 				41DEFF252BDEFB2500E001B8 /* QTMdia.swift */,
 				41EC044F2BE1430500EBE1A5 /* QTMdhd.swift */,
+				41EC04512BE1438300EBE1A5 /* QTHdlr.swift */,
 				41DEFF242BDEFB2500E001B8 /* QTDinf.swift */,
 				41EC044D2BE1426900EBE1A5 /* QTDref.swift */,
 				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
-				41EC04512BE1438300EBE1A5 /* QTHdlr.swift */,
 				41DEFF1F2BDEFB2500E001B8 /* QTStbl.swift */,
-				41EC04572BE144BF00EBE1A5 /* QTStsd.swift */,
 				41EC04592BE144DB00EBE1A5 /* QTStts.swift */,
+				41EC04572BE144BF00EBE1A5 /* QTStsd.swift */,
 				41EC045B2BE1450400EBE1A5 /* QTStsz.swift */,
 				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
 				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
@@ -209,6 +215,7 @@
 			files = (
 				41DEFF2E2BDEFB2500E001B8 /* QTAtomParser.swift in Sources */,
 				41DEFF2D2BDEFB2500E001B8 /* QTFree.swift in Sources */,
+				414AB7B02BE5624D00AFD126 /* QTMeta.swift in Sources */,
 				41EC04622BE1479700EBE1A5 /* QTStsc.swift in Sources */,
 				41DEFF2B2BDEFB2500E001B8 /* QTTrak.swift in Sources */,
 				41EC044E2BE1426900EBE1A5 /* QTDref.swift in Sources */,
@@ -223,6 +230,7 @@
 				41DEFF2C2BDEFB2500E001B8 /* QTMdat.swift in Sources */,
 				41DEFF2A2BDEFB2500E001B8 /* QTStbl.swift in Sources */,
 				41DEFF302BDEFB2500E001B8 /* QTMdia.swift in Sources */,
+				414AB7B22BE5637100AFD126 /* QTUuid.swift in Sources */,
 				41EC04542BE1441D00EBE1A5 /* QTMvhd.swift in Sources */,
 				41EC04562BE1447000EBE1A5 /* QTTkhd.swift in Sources */,
 				41DEFF282BDEFB2500E001B8 /* QTAtom.swift in Sources */,

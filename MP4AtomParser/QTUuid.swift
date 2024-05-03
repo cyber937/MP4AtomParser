@@ -1,17 +1,19 @@
 //
-//  QTDinf.swift
+//  QTUuid.swift
 //  MP4AtomParser
 //
-//  Created by Kiyoshi Nagahama on 4/28/24.
+//  Created by Kiyoshi Nagahama on 5/3/24.
 //
 
 import Foundation
 
-struct QTDinf: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
+// Meta Box
+
+struct QTUuid: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32
     var extSize: UInt64?
-    var type: QTAtomType = .dinf
+    var type: QTAtomType = .uuid
     var location: Range<Int>
     
     var level: Int = 0

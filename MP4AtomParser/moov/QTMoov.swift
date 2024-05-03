@@ -13,10 +13,10 @@ struct QTMoov: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .moov
     var location: Range<Int>
-    
     var level: Int = 0
     
     var children = [QTAtom]()
     
+    var extDescription: String?
     mutating func parseData() {}
 }

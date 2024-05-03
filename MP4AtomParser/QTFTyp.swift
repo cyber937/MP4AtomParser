@@ -38,10 +38,7 @@ struct QTFtyp: QTAtom, CustomStringConvertible {
         majorBrand = majorBrandTemp
         
         // Extract minot version as Int
-        minorVersion = data[offSet+4..<offSet+8]
-            .reduce(0, { soFar, new in
-                (soFar << 8) | UInt32(new)
-            })
+        minorVersion = data[offSet+4..<offSet+8].QTUtilConvert(type: UInt32.self)
         
         // Extract compatible brands as [String]
         var i: Int = offSet+8
@@ -55,8 +52,24 @@ struct QTFtyp: QTAtom, CustomStringConvertible {
             
             i += 4
         }
+    }
+    
+    var extDescription: String? {
         
-        print(majorBrand, minorVersion, compatibleBrands)
+        var indent: String = ""
+        
+        for _ in 0..<level {
+            indent = indent + "   "
+        }
+        
+        let output = """
+        \(indent)\n|
+        \(indent)| Major Brand - \(majorBrand)
+        \(indent)| Minor Version  - \(minorVersion)
+        \(indent)| Compatible Brands - \(compatibleBrands)
+        """
+        
+        return output
     }
     
     mutating func parseData() {
