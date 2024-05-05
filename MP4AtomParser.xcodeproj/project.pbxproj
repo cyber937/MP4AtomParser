@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4107787E2BE16EC700CCBC09 /* QTUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4107787D2BE16EC700CCBC09 /* QTUtility.swift */; };
+		410FE2852BE7C20D007F9248 /* QTCtts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FE2842BE7C20D007F9248 /* QTCtts.swift */; };
+		410FE2872BE7C3AD007F9248 /* QTStss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FE2862BE7C3AD007F9248 /* QTStss.swift */; };
 		414AB7B02BE5624D00AFD126 /* QTMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7AF2BE5624D00AFD126 /* QTMeta.swift */; };
 		414AB7B22BE5637100AFD126 /* QTUuid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7B12BE5637100AFD126 /* QTUuid.swift */; };
 		41DEFF152BDEFA9C00E001B8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF142BDEFA9C00E001B8 /* main.swift */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		4107787D2BE16EC700CCBC09 /* QTUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTUtility.swift; sourceTree = "<group>"; };
+		410FE2842BE7C20D007F9248 /* QTCtts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTCtts.swift; sourceTree = "<group>"; };
+		410FE2862BE7C3AD007F9248 /* QTStss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTStss.swift; sourceTree = "<group>"; };
 		414AB7AF2BE5624D00AFD126 /* QTMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTMeta.swift; sourceTree = "<group>"; };
 		414AB7B12BE5637100AFD126 /* QTUuid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTUuid.swift; sourceTree = "<group>"; };
 		41DEFF112BDEFA9C00E001B8 /* MP4AtomParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MP4AtomParser; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,11 +144,13 @@
 				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
 				41DEFF1F2BDEFB2500E001B8 /* QTStbl.swift */,
 				41EC04592BE144DB00EBE1A5 /* QTStts.swift */,
+				410FE2842BE7C20D007F9248 /* QTCtts.swift */,
 				41EC04572BE144BF00EBE1A5 /* QTStsd.swift */,
 				41EC045B2BE1450400EBE1A5 /* QTStsz.swift */,
-				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
-				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
 				41EC04612BE1479700EBE1A5 /* QTStsc.swift */,
+				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
+				410FE2862BE7C3AD007F9248 /* QTStss.swift */,
+				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
 			);
 			path = moov;
 			sourceTree = "<group>";
@@ -222,9 +228,11 @@
 				41DEFF2F2BDEFB2500E001B8 /* QTDinf.swift in Sources */,
 				41EC045A2BE144DB00EBE1A5 /* QTStts.swift in Sources */,
 				41EC04522BE1438300EBE1A5 /* QTHdlr.swift in Sources */,
+				410FE2852BE7C20D007F9248 /* QTCtts.swift in Sources */,
 				41EC045E2BE1459300EBE1A5 /* QTStco.swift in Sources */,
 				41EC04582BE144BF00EBE1A5 /* QTStsd.swift in Sources */,
 				41EC04502BE1430500EBE1A5 /* QTMdhd.swift in Sources */,
+				410FE2872BE7C3AD007F9248 /* QTStss.swift in Sources */,
 				41EC04602BE1475100EBE1A5 /* QTSmhd.swift in Sources */,
 				41DEFF152BDEFA9C00E001B8 /* main.swift in Sources */,
 				41DEFF2C2BDEFB2500E001B8 /* QTMdat.swift in Sources */,

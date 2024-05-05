@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Sound Media Header Box
+
 struct QTSmhd: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32

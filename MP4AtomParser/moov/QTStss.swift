@@ -1,19 +1,19 @@
 //
-//  QTStsc.swift
+//  QTStss.swift
 //  MP4AtomParser
 //
-//  Created by Kiyoshi Nagahama on 4/30/24.
+//  Created by Kiyoshi Nagahama on 5/5/24.
 //
 
 import Foundation
 
-// Sample To Chunk Box
+// Sync Sample Box
 
-struct QTStsc: QTAtom, CustomStringConvertible {
+struct QTStss: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32
     var extSize: UInt64?
-    var type: QTAtomType = .stsc
+    var type: QTAtomType = .stco
     var location: Range<Int>
     
     var level: Int = 0
@@ -22,9 +22,7 @@ struct QTStsc: QTAtom, CustomStringConvertible {
     
     var version: UInt32 = 0
     var entryCount: UInt32?
-    var firstChunk = [UInt32]()
-    var samplePerChunk = [UInt32]()
-    var sampleDescriptionIndex = [UInt32]()
+    var sampleNumber = [UInt32]()
     
     var extDescription: String? {
         
@@ -39,9 +37,7 @@ struct QTStsc: QTAtom, CustomStringConvertible {
         let output = """
         \n\(indent)|
         \(indent)| Entry Count - \(entryCount)
-        \(indent)| First Chunk - \(firstChunk)
-        \(indent)| Sample Per Chunk - \(samplePerChunk)
-        \(indent)| Sample Description Index - \(sampleDescriptionIndex)
+        \(indent)| Sample Number - \(sampleNumber)
         """
         
         return output
@@ -63,18 +59,14 @@ struct QTStsc: QTAtom, CustomStringConvertible {
         
         for i in 0..<Int(entryCount!) {
             
-            let sampleOffset = i * 12
+            let sampleNumberOffset = i * 4
             
-            let tempFirstChunk = data[offSet+8+sampleOffset..<offSet+12+sampleOffset].QTUtilConvert(type: UInt32.self)
-            firstChunk.append(tempFirstChunk)
+            let tempSampleNumber = data[offSet+8+sampleNumberOffset..<offSet+12+sampleNumberOffset].QTUtilConvert(type: UInt32.self)
+            sampleNumber.append(tempSampleNumber)
             
-            let tempSamplePerChunk = data[offSet+12+sampleOffset..<offSet+16+sampleOffset].QTUtilConvert(type: UInt32.self)
-            samplePerChunk.append(tempSamplePerChunk)
-            
-            let tempSampleDescriptionIndex = data[offSet+16+sampleOffset..<offSet+20+sampleOffset].QTUtilConvert(type: UInt32.self)
-            sampleDescriptionIndex.append(tempSampleDescriptionIndex)
         }
     }
     
     mutating func parseData() {}
 }
+

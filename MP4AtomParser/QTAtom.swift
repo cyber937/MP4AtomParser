@@ -37,9 +37,11 @@ enum QTAtomType: String {
     // ----- Inside 'stbl'
     case stsd
     case stts
+    case ctts
     case stsc
     case stsz
     case stco
+    case stss
     
     case meta
     case uuid
@@ -162,12 +164,16 @@ extension QTAtom {
                 qtAtom = QTStsd(data: data ,size: size, extSize: extSize, location: location)
             case "stts":
                 qtAtom = QTStts(data: data ,size: size, extSize: extSize, location: location)
+            case "ctts":
+                qtAtom = QTStts(data: data ,size: size, extSize: extSize, location: location)
             case "stsc":
                 qtAtom = QTStsc(data: data ,size: size, extSize: extSize, location: location)
             case "stsz":
                 qtAtom = QTStsz(data: data ,size: size, extSize: extSize, location: location)
             case "stco":
                 qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
+            case "stss":
+                qtAtom = QTStss(data: data ,size: size, extSize: extSize, location: location)
             case "meta":
                 qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
                 
