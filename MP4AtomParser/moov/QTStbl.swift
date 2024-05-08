@@ -11,11 +11,11 @@ import Foundation
 
 struct QTStbl: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .stbl
-    var location: Range<Int>
-    
+    var atomName: String = "Sample Table Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

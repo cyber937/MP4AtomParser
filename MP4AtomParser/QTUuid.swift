@@ -11,11 +11,11 @@ import Foundation
 
 struct QTUuid: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .uuid
-    var location: Range<Int>
-    
+    var atomName: String = "UUID Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

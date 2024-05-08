@@ -8,6 +8,8 @@
 import Foundation
 
 enum QTAtomType: String {
+    case root
+    
     case ftyp
     case moov
     case mdat
@@ -43,6 +45,9 @@ enum QTAtomType: String {
     case stco
     case stss
     
+    case edts // Edit Box
+    case elst // Edit List Box
+    
     case meta
     case uuid
 }
@@ -56,16 +61,39 @@ enum QTAtomHandlerType {
 
 protocol QTAtom {
     var data: Data { get }
-    var size: UInt32 { get set}
+    var size: UInt32? { get set}
     var extSize: UInt64? { get set }
     var type: QTAtomType { get }
-    var location: Range<Int> { get set}
+    var atomName: String { get }
+    var location: Range<Int>? { get set}
     var children: [QTAtom] { get set}
     var level: Int { get set }
     
     var description: String { get }
     var extDescription: String? { get }
     mutating func parseData()
+}
+
+struct QTAtomParser: QTAtom {
+    var data: Data
+    var size: UInt32?
+    var extSize: UInt64?
+    var type: QTAtomType = .root
+    var atomName = "Root"
+    var location: Range<Int>?
+    var level: Int = 0
+    
+    var children = [QTAtom]()
+    
+    var extDescription: String?
+    
+    init(url: URL) throws {
+        self.data = try Data(contentsOf: url, options: .mappedIfSafe)
+        
+        startProcess()
+    }
+    
+    mutating func parseData() {}
 }
 
 extension QTAtom {
@@ -78,12 +106,20 @@ extension QTAtom {
             indent = indent + "   "
         }
         
-        var output = """
-        \(indent)Type: \(type)
-        \(indent)| Size  - \(size)
-        \(indent)| Range - \(location)
-        \(indent)| Level - \(level)
-        """
+        var output = ""
+        
+        output += "\(indent)Type: \(type) - \(atomName)\n"
+        
+        if let size {
+            output += "\(indent)| Size  - \(size)\n"
+        }
+        
+        if let location {
+            output += "\(indent)| Range - \(location)\n"
+        }
+
+        output += "\(indent)| Level - \(level)"
+
         
         if let extDescription = extDescription {
             output += extDescription
@@ -111,7 +147,21 @@ extension QTAtom {
     }
     
     mutating func startProcess() {
-        var i: Int = location.lowerBound + 8
+        
+        var offSet: Int
+        
+        if location == nil {
+            location = 0..<data.count
+            offSet = 0
+        } else {
+            offSet = 8
+        }
+        
+        guard let location else {
+            preconditionFailure()
+        }
+        
+        var i: Int = location.lowerBound + offSet
         
         while i != location.upperBound {
             
@@ -138,6 +188,18 @@ extension QTAtom {
             var qtAtom: QTAtom?
             
             switch type {
+            case "ftyp":
+                qtAtom = QTFtyp(data: data,size: size, extSize: extSize, location: location)
+            case "moov":
+                qtAtom = QTMoov(data: data,size: size, extSize: extSize, location: location)
+            case "mdat":
+                qtAtom = QTMdat(data: data,size: size, extSize: extSize, location: location)
+            case "free":
+                qtAtom = QTFree(data: data,size: size, extSize: extSize, location: location)
+            case "meta":
+                qtAtom = QTMeta(data: data,size: size, extSize: extSize, location: location)
+            case "uuid":
+                qtAtom = QTUuid(data: data,size: size, extSize: extSize, location: location)
             case "mvhd":
                 qtAtom = QTMvhd(data: data ,size: size, extSize: extSize, location: location)
             case "trak":
@@ -165,7 +227,7 @@ extension QTAtom {
             case "stts":
                 qtAtom = QTStts(data: data ,size: size, extSize: extSize, location: location)
             case "ctts":
-                qtAtom = QTStts(data: data ,size: size, extSize: extSize, location: location)
+                qtAtom = QTCtts(data: data ,size: size, extSize: extSize, location: location)
             case "stsc":
                 qtAtom = QTStsc(data: data ,size: size, extSize: extSize, location: location)
             case "stsz":
@@ -174,8 +236,10 @@ extension QTAtom {
                 qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
             case "stss":
                 qtAtom = QTStss(data: data ,size: size, extSize: extSize, location: location)
-            case "meta":
-                qtAtom = QTStco(data: data ,size: size, extSize: extSize, location: location)
+            case "edts":
+                qtAtom = QTEdts(data: data ,size: size, extSize: extSize, location: location)
+            case "elst":
+                qtAtom = QTElst(data: data ,size: size, extSize: extSize, location: location)
                 
             default:
                 qtAtom = nil

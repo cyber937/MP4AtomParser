@@ -11,11 +11,11 @@ import Foundation
 
 struct QTHdlr: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .hdlr
-    var location: Range<Int>
-    
+    var atomName: String = "Handler Reference Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()
@@ -78,11 +78,11 @@ struct QTHdlr: QTAtom, CustomStringConvertible {
         
         // reserved unsigned int (32) [3] // 96
         
-        guard let handlerTypeStr = String(data: data[offSet+24..<location.upperBound], encoding: .utf8) else {
-            preconditionFailure()
+        if let handlerTypeStr = String(data: data[offSet+24..<location.upperBound], encoding: .utf8) {
+            name = handlerTypeStr
+        } else {
+            name = "Undifined"
         }
-        
-        name = handlerTypeStr
     }
     
     mutating func parseData() {}

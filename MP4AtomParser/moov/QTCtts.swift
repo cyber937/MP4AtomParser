@@ -11,11 +11,11 @@ import Foundation
 
 struct QTCtts: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .ctts
-    var location: Range<Int>
-    
+    var atomName: String = "Composition Time to Sample Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()
@@ -23,7 +23,7 @@ struct QTCtts: QTAtom, CustomStringConvertible {
     var version: UInt32 = 0
     var entryCount: UInt32?
     var sampleCount = [UInt32]()
-    var sampleDelta = [UInt32]()
+    var sampleOffset = [UInt32]()
     
     var extDescription: String? {
         
@@ -39,7 +39,7 @@ struct QTCtts: QTAtom, CustomStringConvertible {
         \n\(indent)|
         \(indent)| Entry Count - \(entryCount)
         \(indent)| Sample Count - \(sampleCount)
-        \(indent)| Sample Delta - \(sampleDelta)
+        \(indent)| Sample Offset - \(sampleOffset)
         """
         
         return output
@@ -61,13 +61,13 @@ struct QTCtts: QTAtom, CustomStringConvertible {
         
         for i in 0..<Int(entryCount!) {
             
-            let sampleOffset = i * 8
+            let offsetInEntry = i * 8
             
-            let tempSampleCount = data[offSet+8+sampleOffset..<offSet+12+sampleOffset].QTUtilConvert(type: UInt32.self)
+            let tempSampleCount = data[offSet+8+offsetInEntry..<offSet+12+offsetInEntry].QTUtilConvert(type: UInt32.self)
             sampleCount.append(tempSampleCount)
             
-            let tempSampleDelta = data[offSet+12+sampleOffset..<offSet+16+sampleOffset].QTUtilConvert(type: UInt32.self)
-            sampleDelta.append(tempSampleDelta)
+            let tempSampleOffset = data[offSet+12+offsetInEntry..<offSet+16+offsetInEntry].QTUtilConvert(type: UInt32.self)
+            sampleOffset.append(tempSampleOffset)
         }
     }
     

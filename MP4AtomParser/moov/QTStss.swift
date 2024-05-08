@@ -11,11 +11,11 @@ import Foundation
 
 struct QTStss: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
-    var type: QTAtomType = .stco
-    var location: Range<Int>
-    
+    var type: QTAtomType = .stss
+    var atomName: String = "Sync Sample Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

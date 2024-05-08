@@ -11,11 +11,11 @@ import Foundation
 
 struct QTMinf: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .minf
-    var location: Range<Int>
-    
+    var atomName: String = "Media Information Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

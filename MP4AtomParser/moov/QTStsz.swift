@@ -11,11 +11,11 @@ import Foundation
 
 struct QTStsz: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .stsz
-    var location: Range<Int>
-    
+    var atomName: String = "Sample Size Boxes"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()
@@ -61,13 +61,16 @@ struct QTStsz: QTAtom, CustomStringConvertible {
         
         sampleCount = data[offSet+8..<offSet+12].QTUtilConvert(type: UInt32.self)
         
-        for i in 0..<sampleCount! {
+        if sampleSize == 0 {
             
-            let entrySizeOffset = i * 4
-            
-            let tempEntrySize = data[offSet+12+Int(entrySizeOffset)..<offSet+16+Int(entrySizeOffset)].QTUtilConvert(type: UInt32.self)
-            
-            entrySize.append(tempEntrySize)
+            for i in 0..<sampleCount! {
+                
+                let entrySizeOffset = i * 4
+                
+                let tempEntrySize = data[offSet+12+Int(entrySizeOffset)..<offSet+16+Int(entrySizeOffset)].QTUtilConvert(type: UInt32.self)
+                
+                entrySize.append(tempEntrySize)
+            }
         }
     }
     

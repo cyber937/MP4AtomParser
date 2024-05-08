@@ -11,11 +11,11 @@ import Foundation
 
 struct QTSmhd: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .smhd
-    var location: Range<Int>
-    
+    var atomName: String = "Sound Media Header Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

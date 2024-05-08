@@ -11,11 +11,11 @@ import Foundation
 
 struct QTStco: QTAtom, CustomStringConvertible {
     var data: Data
-    var size: UInt32
+    var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .stco
-    var location: Range<Int>
-    
+    var atomName: String = "Chunk Offset Box"
+    var location: Range<Int>?
     var level: Int = 0
     
     var children = [QTAtom]()

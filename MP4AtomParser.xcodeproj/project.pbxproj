@@ -12,6 +12,8 @@
 		410FE2872BE7C3AD007F9248 /* QTStss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FE2862BE7C3AD007F9248 /* QTStss.swift */; };
 		414AB7B02BE5624D00AFD126 /* QTMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7AF2BE5624D00AFD126 /* QTMeta.swift */; };
 		414AB7B22BE5637100AFD126 /* QTUuid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414AB7B12BE5637100AFD126 /* QTUuid.swift */; };
+		414D8F932BEA876400B9E103 /* QTEdts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414D8F922BEA876400B9E103 /* QTEdts.swift */; };
+		414D8F952BEA87A600B9E103 /* QTElst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414D8F942BEA87A600B9E103 /* QTElst.swift */; };
 		41DEFF152BDEFA9C00E001B8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF142BDEFA9C00E001B8 /* main.swift */; };
 		41DEFF262BDEFB2500E001B8 /* QTMoov.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF1B2BDEFB2500E001B8 /* QTMoov.swift */; };
 		41DEFF272BDEFB2500E001B8 /* QTFTyp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */; };
@@ -21,7 +23,6 @@
 		41DEFF2B2BDEFB2500E001B8 /* QTTrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF202BDEFB2500E001B8 /* QTTrak.swift */; };
 		41DEFF2C2BDEFB2500E001B8 /* QTMdat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF212BDEFB2500E001B8 /* QTMdat.swift */; };
 		41DEFF2D2BDEFB2500E001B8 /* QTFree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF222BDEFB2500E001B8 /* QTFree.swift */; };
-		41DEFF2E2BDEFB2500E001B8 /* QTAtomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF232BDEFB2500E001B8 /* QTAtomParser.swift */; };
 		41DEFF2F2BDEFB2500E001B8 /* QTDinf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF242BDEFB2500E001B8 /* QTDinf.swift */; };
 		41DEFF302BDEFB2500E001B8 /* QTMdia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DEFF252BDEFB2500E001B8 /* QTMdia.swift */; };
 		41DEFF332BDEFB6F00E001B8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 41DEFF322BDEFB6F00E001B8 /* ArgumentParser */; };
@@ -56,6 +57,8 @@
 		410FE2862BE7C3AD007F9248 /* QTStss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTStss.swift; sourceTree = "<group>"; };
 		414AB7AF2BE5624D00AFD126 /* QTMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTMeta.swift; sourceTree = "<group>"; };
 		414AB7B12BE5637100AFD126 /* QTUuid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTUuid.swift; sourceTree = "<group>"; };
+		414D8F922BEA876400B9E103 /* QTEdts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTEdts.swift; sourceTree = "<group>"; };
+		414D8F942BEA87A600B9E103 /* QTElst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTElst.swift; sourceTree = "<group>"; };
 		41DEFF112BDEFA9C00E001B8 /* MP4AtomParser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MP4AtomParser; sourceTree = BUILT_PRODUCTS_DIR; };
 		41DEFF142BDEFA9C00E001B8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		41DEFF1B2BDEFB2500E001B8 /* QTMoov.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTMoov.swift; sourceTree = "<group>"; };
@@ -66,7 +69,6 @@
 		41DEFF202BDEFB2500E001B8 /* QTTrak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTTrak.swift; sourceTree = "<group>"; };
 		41DEFF212BDEFB2500E001B8 /* QTMdat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTMdat.swift; sourceTree = "<group>"; };
 		41DEFF222BDEFB2500E001B8 /* QTFree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTFree.swift; sourceTree = "<group>"; };
-		41DEFF232BDEFB2500E001B8 /* QTAtomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTAtomParser.swift; sourceTree = "<group>"; };
 		41DEFF242BDEFB2500E001B8 /* QTDinf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTDinf.swift; sourceTree = "<group>"; };
 		41DEFF252BDEFB2500E001B8 /* QTMdia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTMdia.swift; sourceTree = "<group>"; };
 		41DEFF342BDEFCBE00E001B8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -117,7 +119,6 @@
 			children = (
 				41DEFF142BDEFA9C00E001B8 /* main.swift */,
 				41DEFF1D2BDEFB2500E001B8 /* QTAtom.swift */,
-				41DEFF232BDEFB2500E001B8 /* QTAtomParser.swift */,
 				41DEFF222BDEFB2500E001B8 /* QTFree.swift */,
 				41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */,
 				41DEFF212BDEFB2500E001B8 /* QTMdat.swift */,
@@ -139,9 +140,9 @@
 				41DEFF252BDEFB2500E001B8 /* QTMdia.swift */,
 				41EC044F2BE1430500EBE1A5 /* QTMdhd.swift */,
 				41EC04512BE1438300EBE1A5 /* QTHdlr.swift */,
+				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
 				41DEFF242BDEFB2500E001B8 /* QTDinf.swift */,
 				41EC044D2BE1426900EBE1A5 /* QTDref.swift */,
-				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
 				41DEFF1F2BDEFB2500E001B8 /* QTStbl.swift */,
 				41EC04592BE144DB00EBE1A5 /* QTStts.swift */,
 				410FE2842BE7C20D007F9248 /* QTCtts.swift */,
@@ -151,6 +152,8 @@
 				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
 				410FE2862BE7C3AD007F9248 /* QTStss.swift */,
 				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
+				414D8F922BEA876400B9E103 /* QTEdts.swift */,
+				414D8F942BEA87A600B9E103 /* QTElst.swift */,
 			);
 			path = moov;
 			sourceTree = "<group>";
@@ -219,8 +222,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41DEFF2E2BDEFB2500E001B8 /* QTAtomParser.swift in Sources */,
+				414D8F932BEA876400B9E103 /* QTEdts.swift in Sources */,
 				41DEFF2D2BDEFB2500E001B8 /* QTFree.swift in Sources */,
+				414D8F952BEA87A600B9E103 /* QTElst.swift in Sources */,
 				414AB7B02BE5624D00AFD126 /* QTMeta.swift in Sources */,
 				41EC04622BE1479700EBE1A5 /* QTStsc.swift in Sources */,
 				41DEFF2B2BDEFB2500E001B8 /* QTTrak.swift in Sources */,
