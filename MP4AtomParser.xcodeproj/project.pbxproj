@@ -97,6 +97,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4130CE962BEC0E800056C242 /* trak */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF202BDEFB2500E001B8 /* QTTrak.swift */,
+				41EC04552BE1447000EBE1A5 /* QTTkhd.swift */,
+				4130CE972BEC0EC80056C242 /* edts */,
+				4130CE982BEC0EDD0056C242 /* mdia */,
+			);
+			path = trak;
+			sourceTree = "<group>";
+		};
+		4130CE972BEC0EC80056C242 /* edts */ = {
+			isa = PBXGroup;
+			children = (
+				414D8F922BEA876400B9E103 /* QTEdts.swift */,
+				414D8F942BEA87A600B9E103 /* QTElst.swift */,
+			);
+			path = edts;
+			sourceTree = "<group>";
+		};
+		4130CE982BEC0EDD0056C242 /* mdia */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF252BDEFB2500E001B8 /* QTMdia.swift */,
+				41EC044F2BE1430500EBE1A5 /* QTMdhd.swift */,
+				41EC04512BE1438300EBE1A5 /* QTHdlr.swift */,
+				4130CE992BEC0F450056C242 /* minf */,
+			);
+			path = mdia;
+			sourceTree = "<group>";
+		};
+		4130CE992BEC0F450056C242 /* minf */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
+				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
+				4130CE9A2BEC0F6C0056C242 /* dinf */,
+				4130CE9B2BEC0F7F0056C242 /* stbl */,
+			);
+			path = minf;
+			sourceTree = "<group>";
+		};
+		4130CE9A2BEC0F6C0056C242 /* dinf */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF242BDEFB2500E001B8 /* QTDinf.swift */,
+				41EC044D2BE1426900EBE1A5 /* QTDref.swift */,
+			);
+			path = dinf;
+			sourceTree = "<group>";
+		};
+		4130CE9B2BEC0F7F0056C242 /* stbl */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF1F2BDEFB2500E001B8 /* QTStbl.swift */,
+				41EC04572BE144BF00EBE1A5 /* QTStsd.swift */,
+				41EC04592BE144DB00EBE1A5 /* QTStts.swift */,
+				410FE2842BE7C20D007F9248 /* QTCtts.swift */,
+				41EC04612BE1479700EBE1A5 /* QTStsc.swift */,
+				41EC045B2BE1450400EBE1A5 /* QTStsz.swift */,
+				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
+				410FE2862BE7C3AD007F9248 /* QTStss.swift */,
+			);
+			path = stbl;
+			sourceTree = "<group>";
+		};
+		4130CE9C2BEC104A0056C242 /* atoms */ = {
+			isa = PBXGroup;
+			children = (
+				41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */,
+				41DEFF222BDEFB2500E001B8 /* QTFree.swift */,
+				41DEFF212BDEFB2500E001B8 /* QTMdat.swift */,
+				414AB7AF2BE5624D00AFD126 /* QTMeta.swift */,
+				414AB7B12BE5637100AFD126 /* QTUuid.swift */,
+				41EC044C2BE1423600EBE1A5 /* moov */,
+			);
+			path = atoms;
+			sourceTree = "<group>";
+		};
 		41DEFF082BDEFA9B00E001B8 = {
 			isa = PBXGroup;
 			children = (
@@ -119,12 +198,7 @@
 			children = (
 				41DEFF142BDEFA9C00E001B8 /* main.swift */,
 				41DEFF1D2BDEFB2500E001B8 /* QTAtom.swift */,
-				41DEFF1C2BDEFB2500E001B8 /* QTFTyp.swift */,
-				41DEFF222BDEFB2500E001B8 /* QTFree.swift */,
-				41DEFF212BDEFB2500E001B8 /* QTMdat.swift */,
-				414AB7AF2BE5624D00AFD126 /* QTMeta.swift */,
-				414AB7B12BE5637100AFD126 /* QTUuid.swift */,
-				41EC044C2BE1423600EBE1A5 /* moov */,
+				4130CE9C2BEC104A0056C242 /* atoms */,
 				4107787D2BE16EC700CCBC09 /* QTUtility.swift */,
 			);
 			path = MP4AtomParser;
@@ -135,25 +209,7 @@
 			children = (
 				41DEFF1B2BDEFB2500E001B8 /* QTMoov.swift */,
 				41EC04532BE1441D00EBE1A5 /* QTMvhd.swift */,
-				41DEFF202BDEFB2500E001B8 /* QTTrak.swift */,
-				41EC04552BE1447000EBE1A5 /* QTTkhd.swift */,
-				41DEFF252BDEFB2500E001B8 /* QTMdia.swift */,
-				41EC044F2BE1430500EBE1A5 /* QTMdhd.swift */,
-				41EC04512BE1438300EBE1A5 /* QTHdlr.swift */,
-				41DEFF1E2BDEFB2500E001B8 /* QTMinf.swift */,
-				41DEFF242BDEFB2500E001B8 /* QTDinf.swift */,
-				41EC044D2BE1426900EBE1A5 /* QTDref.swift */,
-				41DEFF1F2BDEFB2500E001B8 /* QTStbl.swift */,
-				41EC045F2BE1475100EBE1A5 /* QTSmhd.swift */,
-				41EC04592BE144DB00EBE1A5 /* QTStts.swift */,
-				410FE2842BE7C20D007F9248 /* QTCtts.swift */,
-				41EC04572BE144BF00EBE1A5 /* QTStsd.swift */,
-				41EC045B2BE1450400EBE1A5 /* QTStsz.swift */,
-				41EC04612BE1479700EBE1A5 /* QTStsc.swift */,
-				41EC045D2BE1459300EBE1A5 /* QTStco.swift */,
-				410FE2862BE7C3AD007F9248 /* QTStss.swift */,
-				414D8F922BEA876400B9E103 /* QTEdts.swift */,
-				414D8F942BEA87A600B9E103 /* QTElst.swift */,
+				4130CE962BEC0E800056C242 /* trak */,
 			);
 			path = moov;
 			sourceTree = "<group>";

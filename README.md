@@ -1,3 +1,5 @@
+# MP4 Atom Parser
+
 Command line tool to parse mp4 media file's atom structure.
 
 The example result:
