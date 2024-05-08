@@ -15,7 +15,7 @@ struct QTCtts: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .ctts
     var atomName: String = "Composition Time to Sample Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

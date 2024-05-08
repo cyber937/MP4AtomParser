@@ -7,13 +7,15 @@
 
 import Foundation
 
+// Track Header Box
+
 struct QTTkhd: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .tkhd
     var atomName: String = "Track Header Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

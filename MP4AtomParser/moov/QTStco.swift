@@ -15,7 +15,7 @@ struct QTStco: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .stco
     var atomName: String = "Chunk Offset Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

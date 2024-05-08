@@ -15,7 +15,7 @@ struct QTStsz: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .stsz
     var atomName: String = "Sample Size Boxes"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

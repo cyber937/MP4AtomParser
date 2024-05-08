@@ -17,9 +17,6 @@ struct MP4AtomParser: ParsableCommand {
         do {
             
             let qtAtomParser = try QTAtomParser(url: url)
-            
-            //qtAtomPerser.startProcess()
-
             print(qtAtomParser.description)
 
         } catch {

@@ -7,13 +7,15 @@
 
 import Foundation
 
+// File Type Box
+
 struct QTFtyp: QTAtom, CustomStringConvertible {
     var data: Data
     var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .ftyp
     var atomName: String = "File Type Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()
@@ -75,7 +77,7 @@ struct QTFtyp: QTAtom, CustomStringConvertible {
     
     mutating func parseData() {
         
-        guard let majorBrandTemp = String(data: data[location!.lowerBound+8..<4], encoding: .utf8) else {
+        guard let majorBrandTemp = String(data: data[location.lowerBound+8..<4], encoding: .utf8) else {
             preconditionFailure()
         }
         

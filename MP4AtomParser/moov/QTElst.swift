@@ -15,7 +15,7 @@ struct QTElst: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .elst
     var atomName: String = "Edit List Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

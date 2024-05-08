@@ -15,7 +15,7 @@ struct QTSmhd: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .smhd
     var atomName: String = "Sound Media Header Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

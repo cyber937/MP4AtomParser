@@ -15,7 +15,7 @@ struct QTStsd: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .stsd
     var atomName: String = "Sample Description Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

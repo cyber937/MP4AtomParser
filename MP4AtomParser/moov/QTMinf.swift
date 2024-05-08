@@ -15,7 +15,7 @@ struct QTMinf: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .minf
     var atomName: String = "Media Information Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

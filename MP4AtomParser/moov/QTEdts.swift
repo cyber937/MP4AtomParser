@@ -15,7 +15,7 @@ struct QTEdts: QTAtom, QTAtomProcessAvailable, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .edts
     var atomName: String = "Edit Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

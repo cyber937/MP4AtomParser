@@ -15,7 +15,7 @@ struct QTMeta: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .meta
     var atomName: String = "Meta Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

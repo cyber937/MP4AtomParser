@@ -15,7 +15,7 @@ struct QTDref: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .dref
     var atomName: String = "Data Reference Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

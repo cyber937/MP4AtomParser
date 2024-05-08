@@ -15,7 +15,7 @@ struct QTHdlr: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .hdlr
     var atomName: String = "Handler Reference Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

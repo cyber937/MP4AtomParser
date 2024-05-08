@@ -15,7 +15,7 @@ struct QTStss: QTAtom, CustomStringConvertible {
     var extSize: UInt64?
     var type: QTAtomType = .stss
     var atomName: String = "Sync Sample Box"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()

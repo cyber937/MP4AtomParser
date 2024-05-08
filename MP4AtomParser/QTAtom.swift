@@ -10,46 +10,32 @@ import Foundation
 enum QTAtomType: String {
     case root
     
-    case ftyp
-    case moov
-    case mdat
-    case free
-    
-    // ----- Inside 'moov'
-    case mvhd
-    case trak
-    
-    // ----- Inside 'trak'
-    case tkhd
-    case mdia
-    
-    // ----- Inside 'mdia'
-    case mdhd
-    case hdlr
-    case minf
-    
-    // ----- Inside 'minf'
-    case smhd
-    case dinf
-    case stbl
-    
-    // ----- Inside 'dinf'
-    case dref
-    
-    // ----- Inside 'stbl'
-    case stsd
-    case stts
-    case ctts
-    case stsc
-    case stsz
-    case stco
-    case stss
-    
+    case ftyp // File Type Box
+    case free // Free Space Box
+    case mdat // Media Data Box
+    case meta // Meta Box
+    case uuid
+    case moov // Movie Box
+    case mvhd // Movie Header Box
+    case trak // Track Box
+    case tkhd // Track Header Box
+    case mdia // Media Box
+    case mdhd // Media Header Box
+    case hdlr // Handler Reference Box
+    case minf // Media Information Box
+    case dinf // Data Information Box
+    case dref // Data Reference Box
+    case stbl // Sample Table Box
+    case smhd // Sound Media Header Box
+    case stsd // Sample Description Box
+    case stts // Dacoding Time to Sample Box
+    case ctts // Composition Time to Sample Box
+    case stsc // Sample To Chunk Box
+    case stsz // Sample Size Boxes
+    case stco // Chunk Offset Box
+    case stss // Sync Sample Box
     case edts // Edit Box
     case elst // Edit List Box
-    
-    case meta
-    case uuid
 }
 
 enum QTAtomHandlerType {
@@ -65,7 +51,7 @@ protocol QTAtom {
     var extSize: UInt64? { get set }
     var type: QTAtomType { get }
     var atomName: String { get }
-    var location: Range<Int>? { get set}
+    var location: Range<Int> { get }
     var children: [QTAtom] { get set}
     var level: Int { get set }
     
@@ -75,12 +61,12 @@ protocol QTAtom {
 }
 
 struct QTAtomParser: QTAtom {
-    var data: Data
+    internal var data: Data
     var size: UInt32?
     var extSize: UInt64?
     var type: QTAtomType = .root
     var atomName = "Root"
-    var location: Range<Int>?
+    var location: Range<Int>
     var level: Int = 0
     
     var children = [QTAtom]()
@@ -89,6 +75,7 @@ struct QTAtomParser: QTAtom {
     
     init(url: URL) throws {
         self.data = try Data(contentsOf: url, options: .mappedIfSafe)
+        self.location = 0..<data.count
         
         startProcess()
     }
@@ -114,12 +101,9 @@ extension QTAtom {
             output += "\(indent)| Size  - \(size)\n"
         }
         
-        if let location {
-            output += "\(indent)| Range - \(location)\n"
-        }
-
+        output += "\(indent)| Range - \(location)\n"
         output += "\(indent)| Level - \(level)"
-
+        
         
         if let extDescription = extDescription {
             output += extDescription
@@ -150,15 +134,10 @@ extension QTAtom {
         
         var offSet: Int
         
-        if location == nil {
-            location = 0..<data.count
+        if type == .root {
             offSet = 0
         } else {
             offSet = 8
-        }
-        
-        guard let location else {
-            preconditionFailure()
         }
         
         var i: Int = location.lowerBound + offSet
@@ -256,8 +235,4 @@ extension QTAtom {
 
 protocol QTAtomProcessAvailable {
     mutating func startProcess()
-}
-
-protocol QTAtomChild {
-    var level: Int { get set }
 }
